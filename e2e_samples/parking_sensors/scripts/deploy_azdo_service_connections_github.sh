@@ -42,7 +42,10 @@ set -o nounset
 
 github_sc_name="mdwdo-park-github"
 export AZURE_DEVOPS_EXT_GITHUB_PAT=$GITHUB_PAT_TOKEN
+
 echo "Creating Github service connection: $github_sc_name in Azure DevOps"
+az devops configure --defaults organization=https://dev.azure.com/dell-ced/ project=ceddataops
+
 github_sc_id=$(az devops service-endpoint github create \
     --name $github_sc_name \
     --github-url "$GITHUB_REPO_URL" \

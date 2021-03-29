@@ -84,11 +84,11 @@
                 "description": "SQL Server Password"
             }
         },
-        "sqlDwDatabaseName": {
+        "sqlDBName": {
             "defaultValue": "ddo_azuresqldw_dw",
             "type": "string",
             "metadata": {
-                "description": "SQL Server Synapse Database name"
+                "description": "SQL Database name"
             }
         },
         "appinsightsName": {
@@ -238,7 +238,7 @@
                 {
                     "type": "databases",
                     "apiVersion": "2017-10-01-preview",
-                    "name": "[parameters('sqlDwDatabaseName')]",
+                    "name": "[parameters('sqlDBName')]",
                     "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
@@ -248,9 +248,9 @@
                         "Environment": "[parameters('environment')]"
                     },
                     "sku": {
-                        "name": "DataWarehouse",
-                        "tier": "DataWarehouse",
-                        "capacity": 900
+                        "name": "Standard",
+                        "tier": "Standard",
+                        "capacity": 10
                     },
                     "properties": {
                         "collation": "SQL_Latin1_General_CP1_CI_AS"
@@ -333,7 +333,7 @@
             "type": "string"
         },
         "sql_dw_database_name": {
-            "value": "[parameters('sqlDwDatabaseName')]",
+            "value": "[parameters('sqlDBName')]",
             "type": "string"
         },
         "appinsights_name": {

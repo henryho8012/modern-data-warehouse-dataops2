@@ -16,20 +16,21 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 # DEALINGS IN THE SOFTWARE.
 
+
 set -o errexit
 set -o pipefail
 set -o nounset
 # set -o xtrace # For debugging
 
+
 . ./scripts/common.sh
 . ./scripts/verify_prerequisites.sh
 . ./scripts/init_environment.sh
 
-
 ###################
 # DEPLOY ALL FOR EACH ENVIRONMENT
 
-for env_name in dev stg prod; do  # dev stg prod
+for env_name in stg prod; do  # dev stg prod
     export ENV_NAME=$env_name
     export RESOURCE_GROUP_NAME="$RESOURCE_GROUP_NAME_PREFIX-$env_name-rg"
     export GITHUB_REPO_URL="https://github.com/$GITHUB_REPO"
@@ -41,10 +42,12 @@ done
 # Deploy AzDevOps Pipelines
 
 # AzDo Github Service Connection -- required only once for the entire deployment
-./scripts/deploy_azdo_service_connections_github.sh
+#./scripts/deploy_azdo_service_connections_github.sh
+
 
 # Release pipelines require DEV_DATAFACTORY_NAME set, retrieve this value from .env.dev file
 export DEV_$(egrep '^DATAFACTORY_NAME' .env.dev | tail -1 | xargs)
+
 
 # Replace 'devlace/mdw-dataops-clone' to deployer's github project
 sed -i "s+devlace/mdw-dataops-clone+$GITHUB_REPO+" devops/azure-pipelines-cd-release.yml

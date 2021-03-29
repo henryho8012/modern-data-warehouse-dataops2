@@ -1,6 +1,6 @@
-GITHUB_REPO=
-GITHUB_PAT_TOKEN=
-RESOURCE_GROUP_LOCATION=australiaeast
+GITHUB_REPO = "henryho8012/modern-data-warehouse-dataops"
+GITHUB_PAT_TOKEN = "3a769018641a0c8372f65b63fc1479d711b300ce"
+RESOURCE_GROUP_LOCATION="southcentralus"
 AZDO_PROJECT=
 AZDO_ORGANIZATION_URL=
 DATABRICKS_HOST=https://australiaeast.azuredatabricks.net
