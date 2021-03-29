@@ -1,0 +1,9 @@
+{
+	"name": "mdwdoadfdevkyljh",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7bcea436-531b-48a7-b6a6-79816371744d",
+		"tenantId": "945c199a-83a2-4e80-9f8c-5a91be5752dd"
+	}
+}
